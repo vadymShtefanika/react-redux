@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import {useDispatch, useSelector} from 'react-redux'
+import {useEffect} from "react";
+import {Api} from "./api";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const dispatch = useDispatch()
+  const store = useSelector((state) => state.root)
+  console.log(store)
+
+  useEffect(() => {
+    dispatch(Api.fetchPosts())
+  },[]);
+
+  // const [isLoading, setIsLoading] = useState(false)
+  // useEffect(() => {
+  //   ;(async () => {
+  //     try {
+  //       setIsLoading(true)
+  //       const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  //       console.log(response.data)
+  //     } catch (err) {
+  //       console.error(err)
+  //     } finally {
+  //       setIsLoading(false)
+  //     }
+  //   })()
+  // }, [])
+  // if (isLoading)
+  //   return 'Loading..'
+  return <div className='App'>Test 1 fdfdsfdf</div>
 }
 
-export default App;
+export default App
